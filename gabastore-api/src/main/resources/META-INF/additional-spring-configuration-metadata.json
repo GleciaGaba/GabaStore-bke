@@ -1,0 +1,67 @@
+{"properties": [
+  {
+    "name": "restcountries.security.jwt.expiration",
+    "type": "java.lang.String",
+    "description": "A description for 'restcountries.security.jwt.expiration'"
+  },
+  {
+    "name": "restcountries.security.jwt.issuer",
+    "type": "java.lang.String",
+    "description": "A description for 'restcountries.security.jwt.issuer'"
+  },
+  {
+    "name": "restcountries.security.jwt.zoneId",
+    "type": "java.lang.String",
+    "description": "A description for 'restcountries.security.jwt.zoneId'"
+  },
+  {
+    "name": "restcountries.security.jwt.secret",
+    "type": "java.lang.String",
+    "description": "A description for 'restcountries.security.jwt.secret'"
+  },
+  {
+    "name": "restcountries.cors.allowed-origins",
+    "type": "java.lang.String",
+    "description": "A description for 'restcountries.cors.allowed-origins'"
+  },
+  {
+    "name": "restcountries.cors.allowed-methods",
+    "type": "java.lang.String",
+    "description": "A description for 'restcountries.cors.allowed-methods'"
+  },
+  {
+    "name": "gabastore.security.jwt.secret",
+    "type": "java.lang.String",
+    "description": "A description for 'gabastore.security.jwt.secret'"
+  },
+  {
+    "name": "gabastore.security.jwt.issuer",
+    "type": "java.lang.String",
+    "description": "A description for 'gabastore.security.jwt.issuer'"
+  },
+  {
+    "name": "gabastore.security.jwt.expiration",
+    "type": "java.lang.String",
+    "description": "A description for 'gabastore.security.jwt.expiration'"
+  },
+  {
+    "name": "gabastore.security.jwt.zoneId",
+    "type": "java.lang.String",
+    "description": "A description for 'gabastore.security.jwt.zoneId'"
+  },
+  {
+    "name": "gabastore.cors.allowed-origins",
+    "type": "java.lang.String",
+    "description": "A description for 'gabastore.cors.allowed-origins'"
+  },
+  {
+    "name": "gabastore.cors.allowed-methods",
+    "type": "java.lang.String",
+    "description": "A description for 'gabastore.cors.allowed-methods'"
+  },
+  {
+    "name": "gabastore.security.jwt.zoned",
+    "type": "java.lang.String",
+    "description": "A description for 'gabastore.security.jwt.zoned'"
+  }
+]}
