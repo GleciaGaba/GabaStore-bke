@@ -1,17 +1,23 @@
 package p25.gabastore.api.dtos;
 
-import p25.gabastore.api.entities.Category;
-
 public class ProductUpdate {
-
+    private Long Id;
     private String name;
     private String description;
     private double price;
     private String imageUrl;
-    private Category category;
+    private Long categoryId;
 
     public ProductUpdate() {
 
+    }
+
+    public Long getId() {
+	return Id;
+    }
+
+    public void setId(Long id) {
+	Id = id;
     }
 
     public String getName() {
@@ -46,18 +52,18 @@ public class ProductUpdate {
 	this.imageUrl = imageUrl;
     }
 
-    public Category getCategory() {
-	return category;
+    public Long getCategoryId() {
+	return categoryId;
     }
 
-    public void setCategory(Category category) {
-	this.category = category;
+    public void setCategoryId(Long categoryId) {
+	this.categoryId = categoryId;
     }
 
     @Override
     public String toString() {
-	return String.format("{ name=%s, description=%s, price=%s,imageUrl=%s, category=%s}", name, description, price,
-		imageUrl, category);
+	return String.format("{Id=%s, name=%s, description=%s, price=%s,imageUrl=%s, categoryId=%s}", Id, name,
+		description, price, imageUrl, categoryId);
     }
 
 }

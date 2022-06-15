@@ -15,7 +15,7 @@ DROP TABLE IF EXISTS categories;
 
 CREATE TABLE roles(  
 	id SERIAL PRIMARY KEY,  
-	name varchar(100) UNIQUE);
+	name varchar(100) UNIQUE NOT NULL);
 	
 
 CREATE TABLE users(  

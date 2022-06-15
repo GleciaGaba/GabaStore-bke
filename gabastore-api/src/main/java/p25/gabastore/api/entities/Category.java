@@ -41,7 +41,7 @@ public class Category {
 
     @Override
     public String toString() {
-	return String.format("{id=%s, category=%s}", id, name);
+	return String.format("{id=%s, name=%s}", id, name);
     }
 
 }

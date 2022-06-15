@@ -28,6 +28,7 @@ public class Product {
 
     @Column(name = "image_url")
     private String imageUrl;
+
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
@@ -76,20 +77,18 @@ public class Product {
 	this.imageUrl = imageUrl;
     }
 
-    
-
     public Category getCategory() {
-        return category;
+	return category;
     }
 
     public void setCategory(Category category) {
-        this.category = category;
+	this.category = category;
     }
 
     @Override
     public String toString() {
-	return String.format("{id=%s, name=%s, description=%s, price=%s, imageUrl=%s, category=%s}", id, name,
-		description, price, imageUrl, category);
+	return String.format("{id=%s, name=%s, description=%s, price=%s, category=%s}", id, name, description, price,
+		category);
     }
 
 }

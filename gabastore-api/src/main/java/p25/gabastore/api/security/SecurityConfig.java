@@ -40,8 +40,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	http.cors().and().csrf().disable().logout().disable().sessionManagement()
 		.sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
 		.antMatchers("/users/**").permitAll().and().authorizeRequests()
-		.antMatchers(HttpMethod.GET, "/products/list", "/products/info").permitAll().and().authorizeRequests()
-		.anyRequest().authenticated().and().oauth2ResourceServer().jwt();
+		.antMatchers(HttpMethod.GET, "/products/{id}", "/products/list", "/categories").permitAll().and()
+		.authorizeRequests().antMatchers(HttpMethod.POST, "/products/create").hasRole("ADMIN").and()
+		.authorizeRequests().antMatchers(HttpMethod.PUT, "/products/{id}").hasRole("ADMIN").and()
+		.authorizeRequests().antMatchers(HttpMethod.DELETE, "/products/{id}").hasRole("ADMIN").and()
+		.authorizeRequests().anyRequest().authenticated().and().oauth2ResourceServer().jwt();
     }
 
     @Bean

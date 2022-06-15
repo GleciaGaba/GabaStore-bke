@@ -8,92 +8,65 @@ import org.springframework.transaction.annotation.Transactional;
 import p25.gabastore.api.dtos.ProductCreate;
 import p25.gabastore.api.dtos.ProductItem;
 import p25.gabastore.api.dtos.ProductUpdate;
+import p25.gabastore.api.entities.Category;
 import p25.gabastore.api.entities.Product;
+import p25.gabastore.api.repositories.CategoryRepository;
 import p25.gabastore.api.repositories.ProductRepository;
-import p25.gabastore.api.dtos.ProductInfo;
 
 @Service
 public class ProductServiceImpl implements ProductService {
 
-    private final ProductRepository repository;
+    private final ProductRepository products;
+    private final CategoryRepository categories;
 
-    public ProductServiceImpl(ProductRepository repository) {
-	this.repository = repository;
-    }
-
-    @Override
-    public List<ProductInfo> findInfos() {
-
-	return repository.findAllProjectedByOrderByName(ProductInfo.class);
-    }
-
-    @Override
-    public List<ProductItem> findItems() {
-
-	return repository.findAllProjectedByOrderByName(ProductItem.class);
+    public ProductServiceImpl(ProductRepository products, CategoryRepository categories) {
+	this.products = products;
+	this.categories = categories;
     }
 
     @Override
     @Transactional
-    public void createProduct(ProductCreate inputs) {
+    public void create(ProductCreate inputs) {
 	Product product = new Product();
 	product.setName(inputs.getName());
 	product.setDescription(inputs.getDescription());
 	product.setPrice(inputs.getPrice());
 	product.setImageUrl(inputs.getImageUrl());
-	product.setCategory(inputs.getCategory());
-	repository.save(product);
-    }
+	Category category = categories.getReferenceById(inputs.getCategoryId());
+	product.setCategory(category);
+	products.save(product);
 
-    @Override
-    public List<Product> getProducts() {
-	return repository.findAllByOrderByName();
-
-    }
-
-    @Override
-    public Product getById(Long id) {
-	return repository.findById(id).get();
     }
 
     @Override
     @Transactional
-    public void updateProductById(Long id, ProductUpdate inputs) {
-	Product product = repository.findById(id).get();
+    public void update(Long id, ProductUpdate inputs) {
+	Product product = products.findById(id).get();
 	product.setName(inputs.getName());
 	product.setDescription(inputs.getDescription());
 	product.setPrice(inputs.getPrice());
 	product.setImageUrl(inputs.getImageUrl());
-	product.setCategory(inputs.getCategory());
-	repository.save(product);
+	Category category = categories.getReferenceById(inputs.getCategoryId());
+	product.setCategory(category);
+	products.save(product);
 
     }
 
-    @Override
-    public List<ProductUpdate> getProductUpdate() {
-	return repository.findAllProjectedBy(ProductUpdate.class);
-    }
-
-    @Override
-    public Product updateStationById(Long id) {
-	return repository.findById(id).get();
-    }
-
-    @Override
-    public Product updateProductById(Long id) {
-	return repository.findById(id).get();
-    }
-
-    @Override
-    public List<Product> getItems() {
-	return repository.findAll();
-    }
-
-    @Override
     @Transactional
-    public void deleteProductById(Long id) {
-	repository.deleteById(id);
+    @Override
+    public void delete(Long id) {
+	products.deleteById(id);
+    }
 
+    @Transactional
+    @Override
+    public List<ProductItem> findItems() {
+	return products.findAllProjectedByOrderByName(ProductItem.class);
+    }
+
+    @Override
+    public ProductItem getById(Long id) {
+	return products.findProjectedById(id);
     }
 
 }

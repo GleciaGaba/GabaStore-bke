@@ -1,33 +1,21 @@
 package p25.gabastore.api.services;
 
-import java.util.List;
-import p25.gabastore.api.dtos.ProductItem;
 import p25.gabastore.api.dtos.ProductUpdate;
-import p25.gabastore.api.entities.Product;
+
+import java.util.List;
 import p25.gabastore.api.dtos.ProductCreate;
-import p25.gabastore.api.dtos.ProductInfo;
+import p25.gabastore.api.dtos.ProductItem;
 
 public interface ProductService {
 
+    void delete(Long id);
+
+    void create(ProductCreate inputs);
+
+    void update(Long id, ProductUpdate inputs);
+
     List<ProductItem> findItems();
 
-    List<ProductInfo> findInfos();
+    ProductItem getById(Long id);
 
-    List<Product> getProducts();
-
-    List<ProductUpdate> getProductUpdate();
-
-    Product getById(Long id);
-
-    void createProduct(ProductCreate product);
-
-    void updateProductById(Long id, ProductUpdate product);
-
-    Product updateStationById(Long id);
-
-    Product updateProductById(Long id);
-
-    List<Product> getItems();
-
-    void deleteProductById(Long id);
 }

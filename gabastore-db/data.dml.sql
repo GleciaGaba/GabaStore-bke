@@ -11,7 +11,7 @@ DELETE FROM roles;
 DELETE FROM categories;
 DELETE FROM products;
 
- INSERT INTO roles(name) VALUES ('admin');
+ INSERT INTO roles(name) VALUES ('ROLE_ADMIN');
  
  INSERT INTO users (username, password) VALUES
     ('user@mail.com', '$2a$12$vrT8/vYBdK5ze/vo6s7LXer5q0mBWQk3tJVsR0iLgEe4OIsdhuc1u' );
